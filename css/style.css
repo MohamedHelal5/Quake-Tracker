@@ -1,0 +1,427 @@
+/* start global */
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Cairo', Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+*:focus {
+    outline: none;
+}
+/* end global */
+/* start side */
+.Earthquake {
+    display: flex;
+}
+.side {
+    position: relative;
+    background-color: #333333;
+    color: #bdb0b0;
+    text-align: center;
+    width: 20%;
+}
+.side .side-title {
+    margin: 20px 0;
+    position: relative;
+}
+.side .side-title a{
+    position: relative;
+    width: 130px;
+    display: block;
+    padding: 40px 55px;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    background: linear-gradient(90deg, rgba(0,97,142,1) 17%, rgba(38,207,242,1) 79%);
+}
+.side .side-title a i{
+    z-index: 999;
+    color: black;
+    position: absolute;
+    font-size: 18px;
+    display: block;
+    margin-top: 10px;
+}
+.side .side-title a span {
+    height: 80%;
+    width: 90%;
+    background: #f7f7f7;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 6px;
+    line-height: 48px;
+    font-size: 19px;
+    transform: translate(-50%, -50%);
+}
+.side .side-title a:hover {
+    animation: rotate 0.4s linear infinite;
+    background: radial-gradient(circle, rgba(17,147,187,1) 0%, rgba(25,187,156,1) 100%);
+}
+.side .side-title a:hover i {
+    color: #19bb9c;
+}
+.side .side-title::before {
+    content: "";
+    width: 65px;
+    height: 3px;
+    position: absolute;
+    background-color: #19bb9c;
+    bottom: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.side .side-title::after {
+    content: "";
+    width: 9px;
+    height: 10px;
+    position: absolute;
+    background-color: #19bb9c;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.side .search {
+    padding: 20px 10px 10px;
+    margin-top: 100px;
+}
+.side .search form label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+.side .search h2{
+    font-size: 20px;
+    text-align: center;
+}
+.side .search label{
+    font-size: 15px;
+    padding: 0 5px
+}
+.side .search input{
+    border: 1px solid #ccc;
+    height: 19px;
+    font-size: 14px;
+    padding: 10px 5px;
+    margin: 5px 0 10px 0;
+}
+.side .search .search-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+.side .search .search-footer .eq-searchBtn{
+    padding: 8px 12px;
+    background-color: #19bb9c;
+    outline: none;
+    border: 1px solid #19bb9c;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.side-footer {
+    padding: 25px 10px;
+    position: absolute;
+    bottom: 0;
+    line-height: 1.3;
+    font-size: 16px;
+    width: 100%;
+}
+.side-footer i {
+    color: #bdb0b0;
+    padding: 5px;
+}
+.side-footer .span1 span:hover i {
+    color: #19bb9c;
+}
+.side-footer a:hover i {
+    color: #19bb9c;
+}
+.side-footer .special {
+    color: #19bb9c;
+    font-weight: bold;
+}
+/* end side */
+/* start map */
+.map {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+.map-view {
+    float: right;
+    width: 80%;
+}
+.map-home {
+    position: absolute;
+    top: 80px;
+    left: 5px;
+    padding: 6px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: #fff;
+    border: 2px solid rgba(0,0,0,0.2);
+    background-clip: padding-box;
+    cursor: pointer;
+    z-index: 99;
+}
+/* end map */
+/* start modal */
+.Earthquake-modal-overlay {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.Earthquake-modal-overlay .Earthquake-modal {
+    max-width: 720px;
+    width: 100%;
+    background-color: #333333;
+    color: #bdb0b0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    z-index: 999;
+}
+.Earthquake-modal-overlay .Earthquake-modal .modal-content {
+    background: white;
+    color: black;
+    height: auto;
+    width: 700px;
+}
+.Earthquake-modal-overlay .Earthquake-modal .modal-content ul li{
+    font-size: 15px;
+    line-height: 2;
+    padding-left: 10px;
+}
+.Earthquake-modal-overlay .Earthquake-modal .modal-content ul li:after{
+    content: "";
+    position: relative;
+    height: 1px;
+    width: 100%;
+    right: 50%;
+    display: block;
+    border: 1px solid #19bb9c;
+    transform: translate(50%, 50%);
+    border-color: transparent transparent black transparent;
+}
+.Earthquake-modal-overlay .Earthquake-modal .modal-header{
+    text-align: center;
+}
+.Earthquake-modal-overlay .Earthquake-modal .modal-footer {
+    margin-top: 10px;
+    text-align: end;
+}
+.Earthquake-modal-overlay .modal-footer .close-btn{
+    padding: 8px 12px;
+    background-color: #19bb9c;
+    outline: none;
+    border: 1px solid #19bb9c;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* end modal */
+/* start footer */
+.footer {
+    background-color: #2c4755;
+    font-size: 16px;
+    text-align: center;
+    color: white; 
+    padding: 15px 0;
+}
+.footer .span2{
+    padding: 5px 0 0 0;
+}
+.footer i {
+    color: white;
+    padding: 0 3px;
+}
+.footer a:hover i {
+    color: #19bb9c;
+}
+/* end footer */
+/* start arcgis api */
+.esri-search {
+    width: 180px !important;
+}
+.esri-ui-inner-container {
+    top: 11px !important;
+    right: 5px !important;
+    left: 5px !important;
+}
+.esri-input::placeholder {
+    font-size: 13px !important;
+}
+.esri-menu {
+    font-size: 13px !important;
+}
+/* end arcgis maps api */
+
+@media (max-width: 768px) {
+    .side {
+        width: 33%;
+        float: left;
+    }
+    .side .side-title {
+        margin: 10px 0;
+    }
+    .side .side-title a{
+        padding: 30px 40px;
+        width: 95px;
+    }
+    .side .side-title a i{
+        font-size: 15px;
+        margin-top: 5px;
+    }
+    .side .side-title a span {
+        height: 80%;
+        width: 90%;
+        line-height: 38px;
+        font-size: 14px;
+    }
+    .side .side-title::before {
+        width: 58px;
+        height: 3px;
+        bottom: -13px;
+    }
+    .side .side-title::after {
+        width: 9px;
+        height: 10px;
+        bottom: -10px;
+        left: 50%;
+    }
+    .side .search{
+        margin-top: 50px;
+        padding: 5px 0;
+    }
+    .side .search h2{
+        font-size: 14px;
+        text-align: center;
+        margin: 20px 0;
+    }
+    .side .search label{
+        font-size: 11px;
+        font-weight: bold;
+    }
+    .side .search input {
+        width: 90px;
+        text-align: center;
+        margin: 5px 0 10px 0;
+        font-size: 13px !important; 
+    }
+    .side .search .lat input{
+        margin-left: 0;
+    }
+    .side .search .search-footer .search-btn{
+        padding: 6px 8px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .side-footer {
+        font-size: 13px;
+        padding: 10px 3px 25px;
+    }
+    .side-footer i {
+        padding: 2px;
+    }
+    .side-footer .span2 {
+        font-size: 12px;
+    }
+    .Earthquake-modal-overlay .Earthquake-modal {
+        max-width: 500px;
+        width: 90%;
+        background-color: #333333;
+        height: auto;
+        padding: 10px;
+    }
+    .Earthquake-modal-overlay .Earthquake-modal .modal-header h2{
+        margin: 5px;
+        font-size: 13px;
+    }
+    .Earthquake-modal-overlay .Earthquake-modal .modal-content {
+        height: 400px;
+        width: auto;
+        overflow: scroll;
+    }
+    .Earthquake-modal-overlay .Earthquake-modal .modal-content ul li{
+        font-size: 11px;
+        padding-left: 5px;
+        font-weight: bold;
+    }
+    .Earthquake-modal .modal-footer {
+        margin-top: 8px;
+    }
+    .Earthquake-modal-overlay .modal-footer .close-btn {
+        padding: 5px;
+        font-size: 13px;
+    }
+    .map-home {
+        top: 80px;
+        left: 4px;
+        padding: 6px;
+    }
+    .esri-popup__header .esri-popup__header-container .esri-widget__heading{
+        font-size: 10px !important;
+        position: relative;
+    }
+    .esri-popup__header .esri-popup__header-container .esri-widget__heading::after {
+        content: "click to get Earthquake data";
+        position: absolute;
+        bottom: -18px;
+        background-color: #19bb9c;
+        outline: none;
+        border: 1px solid #19bb9c;
+        color: white;
+        border-radius: 0px;
+        cursor: pointer;
+        font-size: 11px;
+        padding: 2px;
+    }
+    .esri-popup__content  {
+        display: flex !important;
+        flex-flow: column nowrap !important;
+        flex: 1 1 auto !important;
+        font-size: 10px !important;
+        margin: 0 6px !important;
+        overflow: auto !important;
+        line-height: normal !important;
+    }
+    .esri-popup__content div.esri-feature__content-node  {
+        font-size: 10px !important;
+        height: 105px !important;
+    }
+    .esri-popup__header-container--button {
+        padding-bottom: 15px !important;
+    }
+    .esri-popup__main-container {
+        top: 50%;
+        font-size: 11px;
+        left: 50%;
+        height: fit-content;
+        overflow: scroll;
+    }
+}

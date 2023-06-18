@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quake Tracker</title>
+    <!-- google fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300&display=swap" rel="stylesheet">
+    <!--font awesome all css min file-->
+    <link rel="stylesheet" href="css/all.min.css"/>
+    <!-- Normalize CSS file -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!--  Main CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- ArcGIS API for JS  -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.27/"></script>
+</head>
+<body>
+    
+<!-- start Earthquake -->
+
+    <div class="Earthquake">
+        <!-- side part -->
+        <div class="side">
+            <div class="container">
+                <div class="side-title">
+                    <a href="#">
+                        <span>Quake Tracker</span>
+                        <i class="fa-solid fa-house-crack"></i>
+                    </a>
+                </div>
+                <!-- search part -->
+                <div class="search">
+                    <div class="search-info">
+                        <h2>Earthquake Data : </h2>
+                        <form id="searchForm">
+                            <label for="startTimeInput">Start Time:</label>
+                            <input type="date" id="startTimeInput" required>
+                            <label for="minMagnitudeInput">Minimum Magnitude:</label>
+                            <input type="number" id="minMagnitudeInput" step="0.1" placeholder="type num 0.1 : 10" required>
+                            <label for="maxMagnitudeInput">Maximum Magnitude:</label>
+                            <input type="number" id="maxMagnitudeInput" step="0.1" placeholder="type num 0.1 : 10" required>
+                            <label for="limitInput">Number of Results:</label>
+                            <input type="number" id="limitInput" min="1" max="100" required>
+                            <div class="search-footer">
+                                <button type="submit" class="eq-searchBtn" id="open-modal">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- End Search Part -->
+
+                <!-- side footer -->
+                <div class="side-footer">
+                    <div class="span1">
+                        <span class="footer-span-one">
+                            &copy 2023
+                            <br>
+                            <span class="special">Quake Tracker</span>
+                            <i class="fa-solid fa-house-crack"></i>
+                            <br>
+                            By : Mohamed Helal | GIS Developer
+                        </span>
+                    </div>
+                    <div class="span2">
+                        <span class="footer-span-two">
+                            Contact me 
+                            <a href="https://www.linkedin.com/in/mohamed-a-helal-/" target="_blank">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                            <a href="mailto:moahamed.a.helal@gmail.com?subject=contact" class="link" style="text-decoration: none;" >
+                                <i class="fa-solid fa-envelope" ></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <!-- End footer -->
+            </div>
+        </div>
+        <!-- End Side Part -->
+
+        <!-- map part -->
+        <div class="map-view">
+            <div class="container">
+                <div class="map" id="viewDiv">
+                    <button class="map-home" title="home map view">
+                        <i class="fa-solid fa-house"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- End Map -->
+
+        <!-- Earthquake data modal -->
+        <div class="Earthquake-modal-overlay" id="modal-overlay">
+            <div class="Earthquake-modal" id="modal">
+                <div class="modal-header">
+                <h2>Earthquake Data</h2>
+                </div>
+            
+                <div class="modal-content">
+                    <div class="eq-result" id="result"></div>
+                </div>
+    
+                <div class="modal-footer">
+                <button class="close-btn" id="close-modal">Close</button>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+    </div>
+    <!-- end Earthquake -->
+
+    <!-- main js file -->
+    <script src="js/main.js"></script>
+</body>
+</html>
