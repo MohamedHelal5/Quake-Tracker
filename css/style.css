@@ -331,10 +331,7 @@ a {
         width: 90px;
         text-align: center;
         margin: 5px 0 10px 0;
-        font-size: 13px !important; 
-    }
-    .side .search .lat input{
-        margin-left: 0;
+        font-size: 10px !important; 
     }
     .side .search .search-footer .search-btn{
         padding: 6px 8px;
@@ -389,7 +386,7 @@ a {
         position: relative;
     }
     .esri-popup__header .esri-popup__header-container .esri-widget__heading::after {
-        content: "click to get Earthquake data";
+        content: "click to get data";
         position: absolute;
         bottom: -18px;
         background-color: #19bb9c;
