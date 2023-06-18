@@ -10,8 +10,7 @@ require([
     "esri/layers/GraphicsLayer",
     "esri/PopupTemplate",
     "esri/widgets/Popup",
-    "esri/request",
-  ], function (locator,Map, MapView, Search, ScaleBar, Point,SimpleMarkerSymbol, Graphic, GraphicsLayer,PopupTemplate, Popup, esriRequest) {
+  ], function (locator,Map, MapView, Search, ScaleBar, Point,SimpleMarkerSymbol, Graphic, GraphicsLayer,PopupTemplate, Popup) {
     const map = new Map({
       basemap: "streets-navigation-vector"
     });
@@ -144,7 +143,7 @@ require([
 }
 
 // #######################################3333###############################################################
-    view.popup.autoOpenEnabled = true;
+    view.popup.autoOpenEnabled = false;
     view.on("click", (e) => {
       // Get the coordinates of the click on the view
       // around the decimals to 3 decimals
