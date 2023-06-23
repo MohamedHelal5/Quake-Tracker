@@ -182,6 +182,26 @@ a {
     cursor: pointer;
     z-index: 99;
 }
+.locationinfo {
+    position: absolute;
+    color: #fff;
+    bottom: 15px;
+    left: 30%;
+    padding: 6px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: #060c21;
+    border: 2px solid rgba(0,0,0,0.2);
+    background-clip: border-box;
+    cursor: pointer;
+    width: 600px;
+    height: 40px;
+    transition: 0.5s all linear;
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to bottom, red, rgba(0, 0, 0, 0)) 1 100%;
+    z-index: 99;
+}
 /* end map */
 /* start modal */
 .Earthquake-modal-overlay {
@@ -194,7 +214,7 @@ a {
     justify-content: center;
 }
 .Earthquake-modal-overlay .Earthquake-modal {
-    max-width: 720px;
+    max-width: 800px;
     width: 100%;
     background-color: #333333;
     color: #bdb0b0;
@@ -205,15 +225,18 @@ a {
     z-index: 999;
 }
 .Earthquake-modal-overlay .Earthquake-modal .modal-content {
+    position: relative;
     background: white;
     color: black;
-    height: auto;
-    width: 700px;
+    height: 500px;
+    width: 785px;
+    overflow: scroll;
 }
 .Earthquake-modal-overlay .Earthquake-modal .modal-content ul li{
     font-size: 15px;
     line-height: 2;
     padding-left: 10px;
+    text-indent: 20px;
 }
 .Earthquake-modal-overlay .Earthquake-modal .modal-content ul li:after{
     content: "";
@@ -228,6 +251,22 @@ a {
 }
 .Earthquake-modal-overlay .Earthquake-modal .modal-header{
     text-align: center;
+}
+.Earthquake-modal-overlay .Earthquake-modal .modal-header .sorting {
+    margin-bottom: 10px;
+}
+.modal-header .sorting .magn-sort label {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    margin-right: 10px;
+    background-color: #19bb9c;
+    padding: 2px 5px;
+    border-radius: 6px;
+}
+.modal-header .sorting  .magn-sort select{
+    position: relative;
+    cursor: pointer;
 }
 .Earthquake-modal-overlay .Earthquake-modal .modal-footer {
     margin-top: 10px;
@@ -278,6 +317,12 @@ a {
 }
 .esri-menu {
     font-size: 13px !important;
+}
+.esri-feature__text {
+    line-height: 1 !important;
+}
+.esri-feature__content-element {
+    margin-bottom: 7px !important;
 }
 /* end arcgis maps api */
 
@@ -349,15 +394,26 @@ a {
         font-size: 12px;
     }
     .Earthquake-modal-overlay .Earthquake-modal {
-        max-width: 500px;
-        width: 90%;
+        max-width: 600px;
+        width: 99%;
         background-color: #333333;
         height: auto;
-        padding: 10px;
+        padding: 5px;
     }
     .Earthquake-modal-overlay .Earthquake-modal .modal-header h2{
         margin: 5px;
         font-size: 13px;
+    }
+    .Earthquake-modal-overlay .Earthquake-modal .modal-header .sorting {
+        margin-bottom: 5px;
+    }
+    .modal-header .sorting .magn-sort label {
+        font-size: 12px;
+        margin-right: 5px;
+        padding: 2px 4px;
+    }
+    .modal-header .sorting  .magn-sort select{
+        font-size: 12px;
     }
     .Earthquake-modal-overlay .Earthquake-modal .modal-content {
         height: 400px;
@@ -365,9 +421,10 @@ a {
         overflow: scroll;
     }
     .Earthquake-modal-overlay .Earthquake-modal .modal-content ul li{
-        font-size: 11px;
+        font-size: 8px;
         padding-left: 5px;
         font-weight: bold;
+        text-indent: 15px;
     }
     .Earthquake-modal .modal-footer {
         margin-top: 8px;
@@ -376,14 +433,28 @@ a {
         padding: 5px;
         font-size: 13px;
     }
+    .locationinfo {
+        font-size: 10px;
+        top: 0px;
+        left: 5%;
+        padding: 2px;
+        width: 260px;
+        height: 30px;
+    }
+    /* map home icon */
     .map-home {
-        top: 80px;
+        top: 120px;
         left: 4px;
         padding: 6px;
     }
+    /* zoom in , out icons */
+    .esri-ui-corner .esri-component {
+        position: absolute;
+        top: 40px;
+    }
     .esri-popup__header .esri-popup__header-container .esri-widget__heading{
         font-size: 10px !important;
-        position: relative;
+        position: relative !important;
     }
     .esri-popup__header .esri-popup__header-container .esri-widget__heading::after {
         content: "click to get data";
@@ -407,6 +478,10 @@ a {
         overflow: auto !important;
         line-height: normal !important;
     }
+    /* for earthquake popup data */
+    .esri-feature-content {
+        font-size: 10px !important;
+    }
     .esri-popup__content div.esri-feature__content-node  {
         font-size: 10px !important;
         height: 105px !important;
@@ -420,5 +495,17 @@ a {
         left: 50%;
         height: fit-content;
         overflow: scroll;
+    }
+    /* for modal li number */
+    .li-num {
+        font-size: 10px !important;
+        /* transform: translateY(-22px) !important; */
+        padding: 1px 1px !important;
+        left: 0px !important;
+        font-weight: normal !important;
+    }
+    /* for modal li number */
+    .arrow-icon {
+        margin-left: 1px !important;
     }
 }
